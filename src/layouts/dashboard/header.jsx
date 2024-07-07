@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import { Button} from '@mui/material';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,14 +12,20 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import Iconify from 'src/components/iconify';
 
+import  Courses  from 'src/sections/overview/courses';
+
 import AccountPopover from './common/account-popover';
 import ShappingCart from './common/ShoppingCart-popover';
 
-// ----------------------------------------------------------------------
-
 export default function Header({ onOpenNav }) {
   const lgUp = useResponsive('up', 'lg');
-  const pages = ['موضوعات', 'دوره ها ', 'درباره ما', 'مقالات', 'اخبار'];
+  const pages = ['موضوعات', 'دوره ها', 'درباره ما', 'مقالات', 'اخبار'];
+
+  const [showCourses, setShowCourses] = useState(false);
+
+  const handleShowCourses = () => {
+    setShowCourses(true);
+  };
 
   const renderContent = (
     <>
@@ -36,22 +43,25 @@ export default function Header({ onOpenNav }) {
         spacing={2}
         sx={{ width: '100%', justifyContent: 'center' }}
       >
-        
-
-        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'left'}}>
+        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'left' }}>
           {pages.map((page) => (
-            <Button
+            <NavLink
               key={page}
-              sx={{
-                my: 2,
-                mx: 4,
+              to={page === 'دوره ها' ? '/courses' : `/${page.toLowerCase()}`}
+              
+              activeClassName="active"
+              style={{
+                textDecoration: 'none',
                 color: 'black',
                 display: 'block',
                 fontSize: '18px',
+                margin: '0 25px',
+                position: 'relative',
               }}
+              onClick={page === 'دوره ها' ? handleShowCourses : undefined}
             >
               {page}
-            </Button>
+            </NavLink>
           ))}
         </Box>
 
@@ -68,15 +78,17 @@ export default function Header({ onOpenNav }) {
   );
 
   return (
-    <Box sx={{ flexGrow: 0}}>
-      <AppBar position="fixed" style={{backgroundColor:'rgba(255, 255, 255, 0.1)',backdropFilter: 'blur(10px)'}}>
-        <Toolbar sx={{
-          height: 0,
-          px: { lg: 5 },
-        }}>
-          {renderContent} {/* Assuming renderContent is defined elsewhere */}
-        </Toolbar>
+    <Box sx={{ flexGrow: 0 }}>
+      <AppBar
+        position='static'
+        style={{
+          backgroundColor: 'rgb(0 147 255 / 10%)',
+          backdropFilter: 'blur(10px)',
+        }}
+      >
+        <Toolbar sx={{ height: 0, px: { lg: 5 } }}>{renderContent}</Toolbar>
       </AppBar>
+      {showCourses && <Courses />}
     </Box>
   );
 }
