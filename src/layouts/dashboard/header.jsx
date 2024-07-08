@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
