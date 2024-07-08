@@ -1,11 +1,18 @@
-
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { styled } from '@mui/system';
 import {
-  Box, List, Badge, Button, Popover, Divider, ListItem, Typography, IconButton,
+  Box,
+  List,
+  Badge,
+  Button,
+  Popover,
+  Divider,
+  ListItem,
+  Typography,
+  IconButton,
 } from '@mui/material';
 
 import Iconify from 'src/components/iconify';
@@ -70,7 +77,7 @@ const CartPopover = ({ anchorEl, handleClose, products, removeProduct, increment
         ))}
       </List>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-        <Button className='bg-green-800' variant="contained" onClick={handleClose}>
+        <Button className="bg-green-800" variant="contained" onClick={handleClose}>
           بستن
         </Button>
         <Button variant="contained" color="secondary" onClick={handleClose}>
@@ -84,28 +91,59 @@ const CartPopover = ({ anchorEl, handleClose, products, removeProduct, increment
 const ShoppingCart = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [products, setProducts] = useState([
-    { id: 1, title: "قهوه", price: '20000', discount: '10%', quantity: 1, image: '../../../../public/categories/category1.png' },
-    { id: 2, title: 'قهوه ساز دستی', price: '35000', discount: '15%', quantity: 1, image: '../../../../public/categories/category2.png' },
-    { id: 3, title: 'قهوه ساز برقی', price: '50000', discount: '20%', quantity: 1, image: '../../../../public/categories/category3.png' },
-    { id: 4, title: 'پودر قهوه', price: '40000', discount: '20%', quantity: 1, image: '../../../../public/categories/category4.png' },
+    {
+      id: 1,
+      title: 'قهوه',
+      price: '20000',
+      discount: '10%',
+      quantity: 1,
+      image: '../../../../public/categories/category1.png',
+    },
+    {
+      id: 2,
+      title: 'قهوه ساز دستی',
+      price: '35000',
+      discount: '15%',
+      quantity: 1,
+      image: '../../../../public/categories/category2.png',
+    },
+    {
+      id: 3,
+      title: 'قهوه ساز برقی',
+      price: '50000',
+      discount: '20%',
+      quantity: 1,
+      image: '../../../../public/categories/category3.png',
+    },
+    {
+      id: 4,
+      title: 'پودر قهوه',
+      price: '40000',
+      discount: '20%',
+      quantity: 1,
+      image: '../../../../public/categories/category4.png',
+    },
   ]);
 
   const handleClose = () => setAnchorEl(null);
   const handleOpen = (event) => setAnchorEl(event.currentTarget);
 
-
-
-  
   const removeProduct = (productId) => {
-  setProducts(products.map((product) =>
-    product.id === productId ? { ...product, quantity: product.quantity - 1 } : product
-  ).filter((product) => product.quantity > 0));
-};
+    setProducts(
+      products
+        .map((product) =>
+          product.id === productId ? { ...product, quantity: product.quantity - 1 } : product
+        )
+        .filter((product) => product.quantity > 0)
+    );
+  };
 
   const incrementQuantity = (productId) => {
-    setProducts(products.map((product) => (
-      product.id === productId ? { ...product, quantity: product.quantity + 1 } : product
-    )));
+    setProducts(
+      products.map((product) =>
+        product.id === productId ? { ...product, quantity: product.quantity + 1 } : product
+      )
+    );
   };
 
   return (
@@ -127,10 +165,3 @@ const ShoppingCart = () => {
 };
 
 export default ShoppingCart;
-
-
-
-
-
-
-

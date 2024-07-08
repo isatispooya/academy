@@ -1,7 +1,15 @@
+/* eslint-disable no-plusplus */
 // ----------------------------------------------------------------------
+const randomNumber = Math.floor(Math.random() * 25) + 1;
+console.log(randomNumber);
+
+const currentFileUrl = import.meta.url;
+const currentDirUrl = currentFileUrl.substring(0, currentFileUrl.lastIndexOf('/'));
+
+const avatarUrl = new URL(`/assets/images/avatars/avatar_${randomNumber}.jpg`, currentDirUrl).href;
 
 export const account = {
-  displayName: 'Jaydon Frankie',
-  email: 'demo@minimals.cc',
-  photoURL: '/assets/images/avatars/avatar_25.jpg',
+  displayName: 'زهرا امینی',
+  email: 'zahraamini.yaz20@gmail.com',
+  photoURL: avatarUrl,
 };

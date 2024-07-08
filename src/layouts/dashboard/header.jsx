@@ -1,30 +1,31 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { bgBlur } from 'src/theme/css';
-
 import Iconify from 'src/components/iconify';
 
-import Searchbar from './common/searchbar';
-import { NAV, HEADER } from './config-layout';
+import  Courses  from 'src/sections/overview/courses';
+
 import AccountPopover from './common/account-popover';
-import ShappingCart from './common/ShoppingCart-popover'
-
-
-// ----------------------------------------------------------------------
+import ShappingCart from './common/ShoppingCart-popover';
 
 export default function Header({ onOpenNav }) {
-  const theme = useTheme();
-
   const lgUp = useResponsive('up', 'lg');
+  const pages = ['موضوعات', 'دوره ها', 'درباره ما', 'مقالات', 'اخبار'];
+
+  const [showCourses, setShowCourses] = useState(false);
+
+  const handleShowCourses = () => {
+    setShowCourses(true);
+  };
 
   const renderContent = (
     <>
@@ -34,46 +35,61 @@ export default function Header({ onOpenNav }) {
         </IconButton>
       )}
 
-      <Searchbar />
-
       <Box sx={{ flexGrow: 1 }} />
 
-      <Stack direction="row" alignItems="center" spacing={1}>
-        <ShappingCart>
-          <Iconify  icon="mdi:cart"/>
-        </ShappingCart>
-        <AccountPopover />
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={2}
+        sx={{ width: '100%', justifyContent: 'center' }}
+      >
+        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'left' }}>
+          {pages.map((page) => (
+            <NavLink
+              key={page}
+              to={page === 'دوره ها' ? '/courses' : `/${page.toLowerCase()}`}
+              
+              activeClassName="active"
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+                display: 'block',
+                fontSize: '18px',
+                margin: '0 25px',
+                position: 'relative',
+              }}
+              onClick={page === 'دوره ها' ? handleShowCourses : undefined}
+            >
+              {page}
+            </NavLink>
+          ))}
+        </Box>
+
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <ShappingCart>
+            <Iconify icon="mdi:cart" />
+          </ShappingCart>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <AccountPopover />
+        </Box>
       </Stack>
     </>
   );
 
   return (
-    <AppBar
-      sx={{
-        boxShadow: 'none',
-        height: HEADER.H_MOBILE,
-        zIndex: theme.zIndex.appBar + 1,
-        ...bgBlur({
-          color: theme.palette.background.default,
-        }),
-        transition: theme.transitions.create(['height'], {
-          duration: theme.transitions.duration.shorter,
-        }),
-        ...(lgUp && {
-          width: `calc(100% - ${NAV.WIDTH + 1}px)`,
-          height: HEADER.H_DESKTOP,
-        }),
-      }}
-    >
-      <Toolbar
-        sx={{
-          height: 1,
-          px: { lg: 5 },
+    <Box sx={{ flexGrow: 0 }}>
+      <AppBar
+        position='static'
+        style={{
+          backgroundColor: 'rgb(0 147 255 / 10%)',
+          backdropFilter: 'blur(10px)',
         }}
       >
-        {renderContent}
-      </Toolbar>
-    </AppBar>
+        <Toolbar sx={{ height: 0, px: { lg: 5 } }}>{renderContent}</Toolbar>
+      </AppBar>
+      {showCourses && <Courses />}
+    </Box>
   );
 }
 
