@@ -49,31 +49,33 @@ const CartPopover = ({ anchorEl, handleClose, products, removeProduct, increment
       <Divider />
       <List>
         {products.map((item) => (
-          <ListItem className="flex gap-12 py-6" key={item.id}>
-            <Box className="flex justify-between " sx={{ display: 'flex', gap: 2 }}>
-              <ProductImage src={item.image} alt={item.title} loading="lazy" />
-              <Box className="space-y-0" sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography variant="body1" sx={{ fontWeight: 'medium', color: 'text.primary' }}>
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  {item.discount} تخفیف
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
-                  {item.price} تومان
-                </Typography>
+          <>
+            <ListItem className='flex gap-12 py-6' key={item.id}>
+              <Box className='flex justify-between ' sx={{ display: 'flex', gap: 2 }}>
+                <ProductImage src={item.image} alt={item.title} loading="lazy" />
+                <Box className='space-y-0' sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <Typography variant="body1" sx={{ fontWeight: 'medium', color: 'text.primary' }}>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {item.discount} تخفیف
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
+                    {item.price} تومان
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                    {item.quantity} عدد
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-
-            <div className="flex gap-3">
-              <IconButton edge="end" aria-label="delete" onClick={() => removeProduct(item.id)}>
-                <Iconify className="text-red-500" icon="material-symbols:delete-outline" />
-              </IconButton>
-            </div>
-          </ListItem>
+                <IconButton edge="end" aria-label="delete" onClick={() => removeProduct(item.id)}>
+                  <Iconify className='text-red-500' icon="material-symbols:delete-outline" />
+                </IconButton>
+            </ListItem>
+            <Divider sx={{ width: '100%' }} />
+          </>
         ))}
       </List>
-      <Divider />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
         <Button className="bg-green-800" variant="contained" onClick={handleClose}>
           بستن
