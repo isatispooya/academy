@@ -9,16 +9,13 @@ import {
   Box,
   Card,
   Grid,
-  Button,
+  Rating,
+  Divider,
   CardMedia,
   Typography,
-  CardActions,
   CardContent,
   CardActionArea,
-  Divider,
-  Rating,
 } from '@mui/material';
-import Iconify from 'src/components/iconify';
 
 export default function OnlineCourses() {
   const settings = {
