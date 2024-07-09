@@ -1,8 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-unresolved */
+import Typewriter from "typewriter-effect";
+
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 
 import MaterialSlider from '../slider';
-import AppWidgetSummary from '../app-widget-summary';
+import ArticleList from '../app-articles-list';
+import AppWidgetSummary from '../app-widget-summary'; // ایمپورت کامپوننت ArticleList
 
 export default function AppView() {
   const backgroundStyle = {
@@ -39,6 +44,23 @@ export default function AppView() {
           <Typography variant="body1" style={{ textAlign: 'right' }}>
             با آکادمی خصوصی ایساتیس پویا، علم بورس را با خیال راحت یاد بگیرید و پیشرفت کنید
           </Typography>
+          <div style={{ textAlign: 'right', marginTop: '2rem' }}>
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("ما به هر قیمتی دوره آموزشی تولید نمی‌کنیم!")
+                  .start()
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString('بورس ایساتیس پویا - آکادمی خصوصی بورس')
+                  .start()
+                  .pauseFor(2000);
+              }}
+              options={{
+                loop: true
+              }}
+            />
+          </div>
         </div>
       </div>
 
@@ -86,7 +108,6 @@ export default function AppView() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <AppWidgetSummary
-
             title="دوره های درحال برگذاری"
             color="warning"
             icon={
@@ -98,6 +119,12 @@ export default function AppView() {
               />
             }
           />
+        </Grid>
+        <Grid item xs={12}>
+          <div className="bg-gray-100 min-h-screen p-6">
+            <h1 className="text-3xl font-bold mb-6 text-center">مقالات بروز برنامه نویسی</h1>
+            <ArticleList />
+          </div>
         </Grid>
       </Grid>
     </div>
