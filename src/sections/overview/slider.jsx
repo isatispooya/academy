@@ -19,7 +19,7 @@ export default function MaterialSlider() {
   };
 
   return (
-    <Grid sx={{ width: '100%', opacity: 1 }}>
+    <Grid sx={{ width: '100%', opacity: 1}}>
       <Box>
         <Slider {...settings}>
           <a href="https://sabzlearn.ir/" target="_blank" rel="noopener noreferrer">

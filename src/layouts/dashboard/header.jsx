@@ -47,9 +47,18 @@ export default function Header({ onOpenNav }) {
         sx={{ width: '100%', justifyContent: 'center' }}
       >
         <Logo />
-        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'left', marginRight: '10px' }}>
+        <Box
+          sx={{
+            padding: '2px',
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'left',
+            marginRight: '10px',
+          }}
+        >
           {pages.map((page) => (
             <NavLink
+
               key={page}
               to={page === 'دوره ها' ? '/courses' : `/${page.toLowerCase()}`}
               activeClassName="active"
@@ -63,6 +72,7 @@ export default function Header({ onOpenNav }) {
                 position: 'relative',
                 transition: 'color 0.3s ease',
               }}
+              className="text-gray-600 fixed hover:text-blue-500 hover:border-b-2 hover:border-blue-500 transition duration-300"
               onClick={page === 'دوره ها' ? handleShowCourses : undefined}
             >
               {page}
@@ -76,7 +86,7 @@ export default function Header({ onOpenNav }) {
           </ShappingCart>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <AccountPopover/>
+          <AccountPopover />
         </Box>
       </Stack>
     </>
