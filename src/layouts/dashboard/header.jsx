@@ -12,9 +12,10 @@ import IconButton from '@mui/material/IconButton';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 
-import  Courses  from 'src/sections/overview/courses';
+import Courses from 'src/sections/overview/courses';
 
 import AccountPopover from './common/account-popover';
 import ShappingCart from './common/ShoppingCart-popover';
@@ -45,21 +46,33 @@ export default function Header({ onOpenNav }) {
         spacing={2}
         sx={{ width: '100%', justifyContent: 'center' }}
       >
-        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'left' }}>
+        <Logo />
+        <Box
+          sx={{
+            padding: '2px',
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'left',
+            marginRight: '10px',
+          }}
+        >
           {pages.map((page) => (
             <NavLink
+
               key={page}
               to={page === 'دوره ها' ? '/courses' : `/${page.toLowerCase()}`}
-              
               activeClassName="active"
               style={{
                 textDecoration: 'none',
                 color: 'black',
-                display: 'block',
+                display: 'inline-block',
+                fontWeight: '500',
                 fontSize: '18px',
                 margin: '0 25px',
                 position: 'relative',
+                transition: 'color 0.3s ease',
               }}
+              className="text-gray-600 fixed hover:text-blue-500 hover:border-b-2 hover:border-blue-500 transition duration-300"
               onClick={page === 'دوره ها' ? handleShowCourses : undefined}
             >
               {page}
@@ -82,7 +95,7 @@ export default function Header({ onOpenNav }) {
   return (
     <Box sx={{ flexGrow: 0 }}>
       <AppBar
-        position='static'
+        position="fixed"
         style={{
           backgroundColor: 'rgb(0 147 255 / 10%)',
           backdropFilter: 'blur(10px)',

@@ -1,22 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
-import Typewriter from "typewriter-effect";
+import Typewriter from 'typewriter-effect';
 
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 
 import MaterialSlider from '../slider';
 import ArticleList from '../app-articles-list';
-import AppWidgetSummary from '../app-widget-summary'; // ایمپورت کامپوننت ArticleList
+import AppWidgetSummary from '../app-widget-summary';
 
 export default function AppView() {
   const backgroundStyle = {
-    backgroundImage: 'url("/assets/images/covers/4027794.jpg")',
     backgroundSize: 'contain',
-    backgroundPosition: 'left',
-    backgroundRepeat: 'no-repeat',
     minHeight: '90vh',
     width: '100%',
+    backgroundColor: '#eff6ff'
   };
 
   const iconStyle = {
@@ -26,29 +24,22 @@ export default function AppView() {
   };
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
-      {/* Background image */}
-      <div
-        style={{
-          ...backgroundStyle,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'right',
-        }}
-      >
-        <div style={{ textAlign: 'right', marginTop: '15rem', marginRight: '200px' }}>
-          <div style={{ textAlign: 'right', marginBottom: '1rem' }}>
-            <Typography variant="h2">آکادمی آموزش</Typography>
-            <Typography variant="h4">بورس ایساتیس پویا</Typography>
-          </div>
-          <Typography variant="body1" style={{ textAlign: 'right' }}>
+    <div>
+      <Grid container style={{ ...backgroundStyle }}>
+        <Grid item xs={12} md={6} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <MaterialSlider />
+        </Grid>
+        <Grid item xs={12} md={6} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
+          <Typography variant="h2">آکادمی آموزش</Typography>
+          <Typography variant="h4">بورس ایساتیس پویا</Typography>
+          <Typography variant="body1" style={{ marginTop: '1rem' }}>
             با آکادمی خصوصی ایساتیس پویا، علم بورس را با خیال راحت یاد بگیرید و پیشرفت کنید
           </Typography>
-          <div style={{ textAlign: 'right', marginTop: '2rem' }}>
+          <div style={{ marginTop: '2rem' }}>
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("ما به هر قیمتی دوره آموزشی تولید نمی‌کنیم!")
+                  .typeString('ما به هر قیمتی دوره آموزشی تولید نمی‌کنیم!')
                   .start()
                   .pauseFor(2000)
                   .deleteAll()
@@ -57,15 +48,12 @@ export default function AppView() {
                   .pauseFor(2000);
               }}
               options={{
-                loop: true
+                loop: true,
               }}
             />
           </div>
-        </div>
-      </div>
-
-      {/* Slider */}
-      <MaterialSlider />
+        </Grid>
+      </Grid>
 
       {/* Grid of widgets */}
       <Grid
