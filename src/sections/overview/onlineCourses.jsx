@@ -27,7 +27,15 @@ export default function OnlineCourses() {
     speed: 500,
   };
   return (
-    <Grid sx={{ padding: '20px', backgroundColor: '#fafafa', borderRadius: '20px' }}>
+
+    <Grid sx={{ padding: '10px', backgroundColor: '#fafafa', borderRadius: '20px' }}>
+      <div className="space-y-2 sm:space-y-3 sm:self-start">
+        <div className="flex items-center justify-center sm:justify-start gap-x-2.5">
+          <span className="hidden sm:inline-block w-4 h-4 bg-pink-600 rounded-sm" />
+          <h2 className="font-danaBold text-2xl sm:text-2.5xl">دوره های آموزشی آکادمی</h2>
+        </div>
+        <p className="text-slate-500 font-danaMedium sm:text-lg text-center sm:text-right">دورهای آنلاین</p>
+      </div>
       <Box>
         <Slider {...settings}>
           <Card sx={{ maxWidth: 345 }}>

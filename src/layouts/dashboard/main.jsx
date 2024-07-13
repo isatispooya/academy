@@ -18,10 +18,11 @@ export default function Main({ children, sx, ...other }) {
       sx={{
         flexGrow: 2,
         minHeight: 1,
+        margin:'0px',
         display: 'flex',
         flexDirection: 'column',
         ...(lgUp && {
-          px: 2,
+          px: '44px',
           width: `calc(100% - ${NAV.WIDTH}px)`,
         }),
         ...sx,

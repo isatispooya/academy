@@ -72,7 +72,7 @@ export default function Header({ onOpenNav }) {
                 position: 'relative',
                 transition: 'color 0.3s ease',
               }}
-              className="text-gray-600 fixed hover:text-blue-500 hover:border-b-2 hover:border-blue-500 transition duration-300"
+              className="text-white fixed hover:text-purple-500 hover:border-b hover:border-purple-500 transition duration-300"
               onClick={page === 'دوره ها' ? handleShowCourses : undefined}
             >
               {page}
@@ -82,7 +82,7 @@ export default function Header({ onOpenNav }) {
 
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <ShappingCart>
-            <Iconify icon="mdi:cart" />
+            <Iconify  icon="mdi:cart" />
           </ShappingCart>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -95,9 +95,10 @@ export default function Header({ onOpenNav }) {
   return (
     <Box sx={{ flexGrow: 0 }}>
       <AppBar
+       
         position="fixed"
         style={{
-          backgroundColor: 'rgb(0 147 255 / 10%)',
+          backgroundColor: 'rgb(192 132 252 / 50%)',
           backdropFilter: 'blur(10px)',
         }}
       >

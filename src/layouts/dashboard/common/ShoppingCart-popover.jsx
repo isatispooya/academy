@@ -309,11 +309,19 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <Badge badgeContent={products.length} color="primary">
+      <Badge badgeContent={products.length} sx={{color:"white"}}  >
         <Button
           variant="contained"
           color="primary"
           onClick={handleOpen}
+          sx={{
+            backgroundColor: '#7e22ce',
+            '&:hover': {
+              backgroundColor: '#6b21a8'
+            },
+            padding: '8px',
+            minWidth: '36px'
+          }}
           style={{ padding: '8px', minWidth: '36px' }}
         >
           <Iconify icon="mdi:cart" style={{ fontSize: '1.5rem' }} />
