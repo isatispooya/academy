@@ -94,7 +94,7 @@ export default function AppView() {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="دوره های درحال برگذاری"
             color="warning"
@@ -108,11 +108,9 @@ export default function AppView() {
             }
           />
         </Grid>
-        <Grid item xs={12}>
-          <div className="bg-gray-100 min-h-screen p-6">
-            <h1 className="text-3xl font-bold mb-6 text-center">مقالات بروز برنامه نویسی</h1>
-            <ArticleList />
-          </div>
+        <Grid item xs={12} sm={10} md={8}>
+         
+          <ArticleList />
         </Grid>
       </Grid>
     </div>
