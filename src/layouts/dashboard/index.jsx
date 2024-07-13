@@ -19,7 +19,6 @@ export default function DashboardLayout({ children }) {
         sx={{
           minHeight: 1,
           display: 'flex',
-          flexDirection: { xs: 'column', lg: 'row' },
         }}
       >
         {/* <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} /> */}
