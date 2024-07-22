@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable no-unused-vars */
@@ -7,6 +8,8 @@
 import React, { useState } from "react";
 
 import Iconify from "src/components/iconify";
+import SectionHeader from "src/components/SectionHeader";
+
 
 const Blog = () => {
   const [articles,setarticles]=useState([])
@@ -43,7 +46,7 @@ const Blog = () => {
 
     return (
         <div className="container relative">
-            <div className="flex items-center justify-center sm:justify-between flex-wrap flex-col mb-7 sm:mb-10 sm:flex-row gap-x-4 gap-y-7">
+            {/* <div className="flex items-center justify-center sm:justify-between flex-wrap flex-col mb-7 sm:mb-10 sm:flex-row gap-x-4 gap-y-7">
                 <div className="space-y-2 sm:space-y-3 sm:self-start">
                     <div className="flex items-center justify-center sm:justify-start gap-x-2.5">
                         <span className="hidden sm:inline-block w-4 h-4 bg-pink-600 rounded-sm" />
@@ -55,8 +58,10 @@ const Blog = () => {
                     <span className="font-danaMedium">مشاهده همه مقالات</span>
                     <Iconify icon="mdi:arrow-left" width="1.2rem" height="1.2rem" />
                 </a>
-            </div>
-
+            </div> */}
+            <SectionHeader title="وبلاگ آموزشی" desc="مقالات بروز بورسی" btnTitle="مشاهده همه مقالات"
+                btnHref='article' />
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {data.map((item,index) => (
                     <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
